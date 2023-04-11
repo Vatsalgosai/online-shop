@@ -1,8 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const stripe = require("stripe")(
-  "sk_test_51Ms1rBSBmscJzyEFTQMqjcMBExBVtxoCnCmxUgMPwQdB0acZjbizrR1e4xidwDHzsVg03sdpqkkksKlmr3R5GOax00MdXwMAIq"
-);
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 
 const PDFDocument = require("pdfkit");
 
@@ -305,12 +303,12 @@ exports.getInvoice = (req, res, next) => {
               " - " +
               prod.quantity +
               " x " +
-              "₹" +
+              "Rs." +
               prod.product.price
           );
       });
       pdfDoc.text("---");
-      pdfDoc.fontSize(20).text("Total Price: ₹" + totalPrice);
+      pdfDoc.fontSize(20).text("Total Price: Rs." + totalPrice);
 
       pdfDoc.end();
 
