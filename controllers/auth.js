@@ -2,10 +2,12 @@ const crypto = require("crypto");
 
 const bcrypt = require("bcryptjs");
 const nodemailer = require("nodemailer");
-const sendgridTransport = require("nodemailer-sendgrid-transport");
+// const sendgridTransport = require("nodemailer-sendgrid-transport");
 const { validationResult } = require("express-validator");
 
 const User = require("../models/user");
+
+require("dotenv").config();
 
 const transporter = nodemailer.createTransport({
   service: "gmail",

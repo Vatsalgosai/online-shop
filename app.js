@@ -53,6 +53,7 @@ app.set("views", "views");
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 const authRoutes = require("./routes/auth");
+const { Console } = require("console");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
@@ -120,6 +121,7 @@ mongoose
     //   .createServer({ key: privateKey, cert: certificate }, app)
     //   .listen(process.env.PORT || 3000);
     app.listen(process.env.PORT || 3000);
+    console.log("Server Connected Successfully!");
   })
   .catch((err) => {
     console.log(err);
